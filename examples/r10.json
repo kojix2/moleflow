@@ -1,0 +1,14 @@
+{
+  "samples": [
+    {
+      "path": "examples/reference.fa",
+      "circular": true
+    }
+  ],
+  "channels": 512,
+  "workers": 4,
+  "duration_seconds": 60,
+  "chunk_ms": 400,
+  "model": "models/r10_dna.tsv",
+  "adapter_signal": "models/adapter.i16"
+}

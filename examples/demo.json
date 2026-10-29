@@ -1,0 +1,1 @@
+{"samples":[{"path":"examples/reference.fa","circular":true}],"channels":32,"workers":4,"duration_seconds":10,"chunk_ms":100}

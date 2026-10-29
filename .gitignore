@@ -1,0 +1,11 @@
+/bin/
+/lib/
+/output/
+*.dwarf
+__pycache__/
+.venv/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.ruff_cache/

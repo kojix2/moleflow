@@ -1,0 +1,26 @@
+Moleflow 0.1.2
+Research implementation inspired by LooseLab/Icarust.
+
+Icarust reference revision: ef055864183ca2f149b748d29c34fe4ec1e74cac
+https://github.com/LooseLab/Icarust
+The MPL-2.0 license is retained for this implementation and the included
+Icarust assets. See LICENSE.
+models/r10_dna.tsv is an unmodified copy of:
+  static/dna_r10.4.1_e8.2_400bps/R10_model.tsv
+models/adapter.i16 is the little-endian int16 representation of:
+  static/prefix.squiggle.npy
+No claim is made that these assets reproduce a current commercial pore model.
+The source repository is the provenance of these bundled research assets.
+
+MIT-licensed dependencies: kojix2/grpc, kojix2/proto, kojix2/minknow, crystal-ameba/ameba.
+Exact upstream revisions: shard.lock. Shards installs them under lib/ and
+preserves their original license notices.
+The gRPC streaming and linker fixes are included in the pinned upstream revision;
+no local dependency patches are applied.
+The MinKNOW dependency includes BSD-licensed Google protobuf schemas;
+their original copyright and license notices are in lib/minknow/vendor/google/protobuf.
+The nanoporetech MinKNOW protocol definitions are supplied by minknow;
+retain the upstream protocol notices alongside generated code.
+
+This software is not affiliated with or endorsed by Oxford Nanopore
+Technologies. Simulated output is marked as simulation.
