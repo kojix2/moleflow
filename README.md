@@ -125,6 +125,13 @@ results, so a seed alone does not reproduce an interactive run.
 - [Validation results and boundaries](docs/VALIDATION.md)
 - [Audit history](docs/AUDIT.md)
 
+## Acknowledgements
+
+Moleflow was developed with [Icarust](https://github.com/LooseLab/Icarust) as a
+reference and uses its R10 model and adapter signal. Thanks to its authors and
+contributors. Moleflow does not reproduce Icarust's behavior exactly; see
+[NOTICE](NOTICE) for provenance and details.
+
 ## License
 
 Moleflow is licensed under [MPL-2.0](LICENSE). Bundled model provenance and

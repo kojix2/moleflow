@@ -4,10 +4,12 @@ Moleflow
 Moleflow is licensed under the Mozilla Public License 2.0; see LICENSE.
 Third-party components retain their own licenses and notices.
 
-Bundled research assets
------------------------
+Icarust reference and bundled assets
+-----------------------------------
 
-This implementation is inspired by LooseLab/Icarust:
+Moleflow was developed with LooseLab/Icarust as a reference for its MinKNOW
+simulator design and implementation, not as a behavior-preserving port.
+We thank the Icarust authors and contributors for their work.
 https://github.com/LooseLab/Icarust
 Reference revision: ef055864183ca2f149b748d29c34fe4ec1e74cac
 
@@ -16,6 +18,12 @@ The included Icarust assets retain MPL-2.0 licensing:
   static/dna_r10.4.1_e8.2_400bps/R10_model.tsv.
 - models/adapter.i16: little-endian int16 representation of
   static/prefix.squiggle.npy.
+
+The model file is byte-identical to the referenced version; all 913 adapter
+sample values are preserved. Signal noise, sampling, read-length distributions
+and pore scheduling differ between the projects. Shared assets do not imply
+identical simulated reads or equivalent Read Until behavior. Cross-project
+output equivalence has not been validated.
 
 The source repository is the provenance of these research assets. No claim is
 made that they reproduce a current commercial pore model.
