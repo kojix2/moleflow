@@ -1,26 +1,56 @@
-Moleflow 0.1.2
-Research implementation inspired by LooseLab/Icarust.
+Moleflow
+========
 
-Icarust reference revision: ef055864183ca2f149b748d29c34fe4ec1e74cac
+Moleflow is licensed under the Mozilla Public License 2.0; see LICENSE.
+Third-party components retain their own licenses and notices.
+
+Bundled research assets
+-----------------------
+
+This implementation is inspired by LooseLab/Icarust:
 https://github.com/LooseLab/Icarust
-The MPL-2.0 license is retained for this implementation and the included
-Icarust assets. See LICENSE.
-models/r10_dna.tsv is an unmodified copy of:
-  static/dna_r10.4.1_e8.2_400bps/R10_model.tsv
-models/adapter.i16 is the little-endian int16 representation of:
-  static/prefix.squiggle.npy
-No claim is made that these assets reproduce a current commercial pore model.
-The source repository is the provenance of these bundled research assets.
+Reference revision: ef055864183ca2f149b748d29c34fe4ec1e74cac
 
-MIT-licensed dependencies: kojix2/grpc, kojix2/proto, kojix2/minknow, crystal-ameba/ameba.
-Exact upstream revisions: shard.lock. Shards installs them under lib/ and
-preserves their original license notices.
-The gRPC streaming and linker fixes are included in the pinned upstream revision;
-no local dependency patches are applied.
-The MinKNOW dependency includes BSD-licensed Google protobuf schemas;
-their original copyright and license notices are in lib/minknow/vendor/google/protobuf.
-The nanoporetech MinKNOW protocol definitions are supplied by minknow;
-retain the upstream protocol notices alongside generated code.
+The included Icarust assets retain MPL-2.0 licensing:
+- models/r10_dna.tsv: unmodified copy of
+  static/dna_r10.4.1_e8.2_400bps/R10_model.tsv.
+- models/adapter.i16: little-endian int16 representation of
+  static/prefix.squiggle.npy.
+
+The source repository is the provenance of these research assets. No claim is
+made that they reproduce a current commercial pore model.
+
+Crystal dependencies
+--------------------
+
+MIT-licensed dependencies: kojix2/grpc, kojix2/proto, kojix2/minknow,
+kojix2/pod5.cr, and crystal-ameba/ameba (development only).
+Resolved versions are recorded in shard.lock. Shards installs dependencies
+under lib/; retain their original copyright and license notices.
+proto declares MIT in lib/proto/shard.yml; the resolved revision does not
+include a standalone LICENSE file.
+
+MinKNOW protocol definitions and Google protobuf schemas carry additional
+upstream notices. Retain the protocol notices alongside generated code and
+the BSD license notices in lib/minknow/vendor/google/protobuf.
+
+Native POD5 components
+----------------------
+
+The build downloads the official libpod5_format binary and builds the pod5.cr
+compatibility library. POD5 C API sources and patches are MPL-2.0; Apache Arrow
+headers are Apache-2.0 with bundled third-party notices; gsl-lite headers are
+MIT-licensed. These licenses are not replaced by pod5.cr's MIT license.
+
+See lib/pod5/THIRD_PARTY.md and lib/pod5/ext/LICENSE-POD5 after installation.
+The native installation retains component licenses under
+lib/pod5/vendor/pod5/licenses and compatibility sources under
+lib/pod5/vendor/pod5/src/pod5-cr (or the configured POD5_NATIVE_PREFIX).
+When redistributing native binaries, keep the applicable licenses and notices
+and make the corresponding MPL-covered source available as required by MPL-2.0.
+
+Disclaimer
+----------
 
 This software is not affiliated with or endorsed by Oxford Nanopore
 Technologies. Simulated output is marked as simulation.
