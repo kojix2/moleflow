@@ -2,7 +2,7 @@ version: 2.0
 shards:
   ameba:
     git: https://github.com/crystal-ameba/ameba.git
-    version: 1.7.1-dev+git.commit.7590399af9837a072d6523c5a7f33f08c1588f38
+    version: 1.7.0
 
   grpc:
     git: https://github.com/kojix2/grpc.git
@@ -11,6 +11,10 @@ shards:
   minknow:
     git: https://github.com/kojix2/minknow.git
     version: 0.1.0+git.commit.1b7df10fa6eb53bb1e3687c5da2b4d9b19f3e60b
+
+  pod5:
+    git: https://github.com/kojix2/pod5.cr.git
+    version: 0.1.0+git.commit.ab463468ddf02a060bcef98be195ab279d33af5e
 
   proto:
     git: https://github.com/kojix2/proto.git

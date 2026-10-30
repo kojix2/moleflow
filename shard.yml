@@ -5,18 +5,18 @@ license: MPL-2.0
 targets:
   moleflow:
     main: src/main.cr
+  moleflow-pod5:
+    main: src/pod5_main.cr
 dependencies:
+  pod5:
+    github: kojix2/pod5.cr
   grpc:
     github: kojix2/grpc
-    commit: 867a084acf52ae6713522171097bd2a257bcc73c
   proto:
     github: kojix2/proto
-    commit: 675d91e11138e48aaeaa96e2325f42a8abe8a57e
   minknow:
     github: kojix2/minknow
-    commit: 1b7df10fa6eb53bb1e3687c5da2b4d9b19f3e60b
 
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
-    commit: 7590399af9837a072d6523c5a7f33f08c1588f38

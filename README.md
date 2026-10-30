@@ -17,7 +17,7 @@ Run commands from the project root. Build from source using Crystal >= 1.22,
 Shards and the system dependencies listed below.
 
 ```sh
-shards build --release
+sh scripts/build.sh
 ./bin/moleflow --validate -c examples/r10.json
 ./bin/moleflow -c examples/r10.json
 ```
@@ -38,10 +38,14 @@ python3 -m pip install -r requirements-test.txt
 sh scripts/test.sh
 ```
 
-Dependencies are pinned in `shard.yml` and `shard.lock`. Shards installs the
-dependencies when building. The gRPC streaming and linker fixes are
+Dependencies track the latest available versions without commit pins in
+`shard.yml`; `shard.lock` records the resolved versions for reproducible builds.
+Run `shards update` to refresh them. The build script installs the Crystal
+dependencies and the native POD5 library.
+Native POD5 setup requires a C++20 compiler, curl, tar, unzip and patch; see
+[pod5.cr](https://github.com/kojix2/pod5.cr) for platform requirements. The gRPC streaming and linker fixes are
 included upstream; no patch application is needed.
-The pinned MinKNOW dependency also includes regenerated Google protobuf types;
+The MinKNOW dependency also includes regenerated Google protobuf types;
 no application-level Float compatibility extensions are needed.
 
 ## Configuration
@@ -109,14 +113,15 @@ exceeds the configured maximum read age, it returns FAILED_READ_TOO_LONG and
 stops further client data for that read, following the protocol definition.
 
 ```sh
-python3 scripts/convert_output.py output run.pod5
-python3 scripts/convert_output.py output run.fast5
-python3 scripts/prepare_replay.py real.pod5 replay --limit 1000
+sh scripts/pod5.sh convert output run.pod5
+sh scripts/pod5.sh prepare real.pod5 replay --limit=1000
 ./bin/moleflow -c replay/replay.json
 ```
 
-POD5 and FAST5 conversion runs outside the server, one completed read at a time.
-POD5 uses the official Python writer. Replay preparation converts different
+POD5 conversion runs outside the server, one completed read at a time.
+The Crystal tool uses pod5.cr and the official native POD5 library; Python is
+only used by independent interoperability tests. FAST5 is not supported.
+Conversion holds one full read in memory; ADC I/O uses 64 KiB blocks. Replay preparation converts different
 per-read calibrations to one common ADC calibration; it rejects clipping and
 mixed sampling rates. This conversion may introduce quantization differences.
 Raw `.i16` replay itself is byte-exact. Output file count grows with the number of
@@ -173,7 +178,7 @@ crystal run examples/client.cr -- localhost:10001
 
 ## Static analysis
 
-`scripts/test.sh` checks formatting and runs the pinned Ameba development
+`scripts/test.sh` checks formatting and runs the Ameba development
 dependency before the tests. To run Ameba separately:
 
 ```sh
@@ -182,3 +187,18 @@ crystal run lib/ameba/bin/ameba.cr -- --no-color
 
 Its scope is application sources, specs and examples. Dependency sources and
 generated code are outside its scope.
+
+## Working with local pod5.cr changes
+
+Clone pod5.cr beside this checkout and create `shard.override.yml`:
+
+```yaml
+dependencies:
+  pod5:
+    path: ../pod5.cr
+```
+
+Run `sh scripts/build.sh` afterwards. This ignored override tests unpublished
+pod5.cr changes without changing the remote dependency. The current upstream
+version already includes the writer optimization that removes an extra signal
+copy. Never mutate a signal concurrently with `Writer#add`.

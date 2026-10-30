@@ -4,12 +4,9 @@ import pathlib
 import subprocess
 import tempfile
 
-import h5py
 import numpy as np
 import pod5
-from convert_output import convert
 from integration import ROOT
-from prepare_replay import prepare
 
 with tempfile.TemporaryDirectory() as td:
     td = pathlib.Path(td)
@@ -26,8 +23,10 @@ with tempfile.TemporaryDirectory() as td:
     subprocess.run(
         [str(ROOT / "bin/moleflow"), "--simulate", "-c", str(td / "c.json")], check=True
     )
-    convert(output, td / "run.pod5")
-    convert(output, td / "run.fast5")
+    subprocess.run(
+        [str(ROOT / "scripts/pod5.sh"), "convert", str(output), str(td / "run.pod5")],
+        check=True,
+    )
     rows = {
         r["read_id"]: r
         for r in map(json.loads, (output / "reads.jsonl").read_text().splitlines())
@@ -40,23 +39,31 @@ with tempfile.TemporaryDirectory() as td:
             assert np.array_equal(r.signal, expected)
             assert r.run_info.sample_rate == 5000
             assert len(r.signal) == rows[str(r.read_id)]["sample_count"]
-    with h5py.File(td / "run.fast5") as f:
-        assert len(f) == len(rows)
-        for rid, row in rows.items():
-            assert np.array_equal(
-                f["read_" + rid + "/Raw/Signal"][:],
-                np.fromfile(output / "signal" / f"{rid}.i16", dtype="<i2"),
+    subprocess.run(
+        [
+            str(ROOT / "scripts/pod5.sh"),
+            "prepare",
+            str(td / "run.pod5"),
+            str(td / "replay"),
+            "--limit=1000",
+        ],
+        check=True,
+    )
+    replay_config = json.loads((td / "replay/replay.json").read_text())
+    replay_paths = {
+        pathlib.Path(item["path"]).stem: item["path"]
+        for item in replay_config["samples"]
+    }
+    with pod5.Reader(td / "run.pod5") as f:
+        for r in f.reads():
+            expected = np.rint(
+                (r.signal.astype(np.float64) + r.calibration.offset)
+                * r.calibration.scale
+                / replay_config["scale"]
+                - replay_config["offset"]
             )
-    try:
-        from ont_fast5_api.fast5_interface import get_fast5_file
-    except ImportError:
-        pass
-    else:
-        with get_fast5_file(str(td / "run.fast5"), mode="r") as f:
-            assert len(f.get_read_ids()) == len(rows)
-            for read in f.get_reads():
-                assert len(read.get_raw_data()) == rows[read.read_id]["sample_count"]
-    prepare(td / "run.pod5", td / "replay", 1000)
+            actual = np.fromfile(replay_paths[str(r.read_id)], dtype="<i2")
+            assert np.array_equal(actual, expected.astype("<i2"))
     subprocess.run(
         [
             str(ROOT / "bin/moleflow"),
@@ -66,4 +73,4 @@ with tempfile.TemporaryDirectory() as td:
         ],
         check=True,
     )
-    print("POD5/FAST5 round-trip and replay preparation passed:", len(rows), "reads")
+    print("POD5 round-trip and replay preparation passed:", len(rows), "reads")

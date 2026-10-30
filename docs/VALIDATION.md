@@ -1,3 +1,44 @@
+## Repository integration validation (2026-10-30)
+
+Validated with mise-managed Crystal 1.22.1 on Linux x86_64 and native POD5
+0.3.49, using upstream pod5.cr without bundled sources or a local override.
+Dependencies have no commit pins in `shard.yml`; `shard.lock` records the
+resolved versions. `shards update` selected pod5.cr `ab463468` and Ameba 1.7.0.
+
+- Both release targets built with `sh scripts/build.sh`.
+- `sh scripts/test.sh` passed formatting, Ameba (23 files), all 29 Crystal
+  specs, plain/TLS gRPC, 3,000-channel integration, five edge-case scenarios,
+  explicit slow-consumer termination, and independent Python POD5/replay
+  interoperability for all 11 generated reads.
+- Black and Ruff passed for the updated Python interoperability test.
+
+The former Python conversion/preparation scripts are replaced by the Crystal
+POD5 tool. FAST5 is no longer supported. Historical results below retain the
+dependencies and functionality used in those earlier checks.
+
+## POD5 integration update (2026-10-30)
+
+Based on Moleflow `9f72ef9` and pod5.cr `5ba6014`, retaining the existing
+initial-audit fixes. Checked on Linux x86_64 with Crystal 1.22.0 and native POD5
+0.3.49, using the sibling pod5.cr checkout through `shard.override.yml`:
+
+- Native POD5 installation from verified downloads and release builds succeeded.
+- Moleflow: 29 specs passed, including 64 KiB ADC boundary and rollback tests.
+- pod5.cr: 24 specs passed, including signal reuse before writer close and copying
+  a lazy record whose source reader closes before the destination writer.
+- Ameba: 23 application/spec/example files, zero failures. Formatting passed.
+- Official Python POD5 interoperability: 11 reads; every ADC sample and replay
+  calibration result matched the independent reader/NumPy calculations.
+- gRPC integration: 32 channels, plain and TLS/calibrated streams, including
+  unblock acknowledgements, passed.
+
+These checks do not constitute a new throughput benchmark or GPU/real-device
+validation. The writer avoids an extra Crystal signal copy; conversion still
+holds a full read in memory. No new peak-RSS reduction is claimed.
+
+> Historical results below include the former Python FAST5 support. Current
+> conversion supports POD5 only; run `scripts/test.sh` for current checks.
+
 # Validation record
 
 Last functional validation: 2026-10-30. Crystal 1.22.0, Linux x86_64, OpenSSL 3,
@@ -132,6 +173,6 @@ generated protocol files are identical to the pinned upstream source.
 
 The simplified signal model's physical fidelity, current Dorado basecalling,
 full readfish workflows, real human-genome references, macOS and Windows have
-not been validated here. POD5/FAST5 are exported after a run through Python;
+not been validated here. POD5 is exported after a run through the Crystal tool;
 the live Crystal process stores raw per-read files. Real-signal replay is provided
 for downstream basecaller testing. API support is listed in `API.md`.
