@@ -1,0 +1,54 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libnghttp2-dev libssl-dev libyaml-dev
+
+      - name: Install macOS dependencies
+        if: runner.os == 'macOS'
+        run: |
+          brew install pkg-config libnghttp2 openssl@3 libyaml
+          echo "$(brew --prefix openssl@3)/bin" >> "$GITHUB_PATH"
+          echo "PKG_CONFIG_PATH=$(brew --prefix libnghttp2)/lib/pkgconfig:$(brew --prefix openssl@3)/lib/pkgconfig:$(brew --prefix libyaml)/lib/pkgconfig" >> "$GITHUB_ENV"
+          echo "LIBRARY_PATH=$(brew --prefix libnghttp2)/lib:$(brew --prefix openssl@3)/lib:$(brew --prefix libyaml)/lib" >> "$GITHUB_ENV"
+
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: latest
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-test.txt
+
+      - name: Install Python test dependencies
+        run: python3 -m pip install -r requirements-test.txt
+
+      - name: Build
+        run: sh scripts/build.sh
+
+      - name: Test
+        run: sh scripts/test.sh
