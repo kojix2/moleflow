@@ -12,7 +12,7 @@ Requires Crystal >= 1.22, Shards and C++20 build tools. From the repository root
 
 ```sh
 # Ubuntu
-sudo apt-get install build-essential pkg-config libnghttp2-dev libssl-dev libyaml-dev curl tar unzip patch
+sudo apt-get install libgtk-3-dev build-essential pkg-config libnghttp2-dev libssl-dev libyaml-dev curl tar unzip patch
 # macOS: install Xcode Command Line Tools, then:
 brew install pkg-config libnghttp2 openssl@3 libyaml
 export PKG_CONFIG_PATH="$(brew --prefix libnghttp2)/lib/pkgconfig:$(brew --prefix openssl@3)/lib/pkgconfig:$(brew --prefix libyaml)/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
@@ -20,8 +20,9 @@ export LIBRARY_PATH="$(brew --prefix libnghttp2)/lib:$(brew --prefix openssl@3)/
 ```
 
 Run the commands for your OS, then `sh scripts/build.sh`. This updates runtime
-dependencies from `main`, installs native POD5 and builds `bin/moleflow` and
-`bin/moleflow-pod5`. Native downloads support Linux x86_64/ARM64 and macOS 14+ ARM64.
+dependencies from `main`, installs native POD5 and builds `bin/moleflow`,
+`bin/moleflow-pod5` and `bin/moleflow-gui`. Native downloads support Linux
+x86_64/ARM64 and macOS 14+ ARM64.
 
 ## Run
 
@@ -41,6 +42,21 @@ Edit [examples/r10.json](examples/r10.json) for your inputs. Common settings are
 `channels`, `workers`, `duration_seconds`, `chunk_ms`, `seed` and `output`.
 Paths are relative to the working directory. See [Config](src/moleflow/config.cr)
 and [API support](docs/API.md) for defaults, TLS and protocol limits.
+
+## GUI
+
+```sh
+bin/moleflow-gui -c examples/r10.json
+```
+
+Edit common settings in the form or all settings in the JSON tab. The native
+toolbar uses [Radix icons](https://github.com/kojix2/icon-radix) for open/save,
+settings, validation and start/stop; the log tab shows output. Relative paths use
+the displayed working directory. The GUI launches the sibling `moleflow` CLI;
+`--cli=PATH` selects another executable. Choose serve or offline generation;
+configure multiple samples, raw replay and TLS in the JSON tab.
+Ubuntu requires GTK 3; macOS uses native controls. GUI smoke tests:
+`sh scripts/test-gui.sh` (Linux also needs `xvfb` and `xauth`).
 
 ## Record and replay
 
