@@ -10,12 +10,16 @@ targets:
 dependencies:
   pod5:
     github: kojix2/pod5.cr
+    branch: main
   grpc:
     github: kojix2/grpc
+    branch: main
   proto:
     github: kojix2/proto
+    branch: main
   minknow:
     github: kojix2/minknow
+    branch: main
 
 development_dependencies:
   ameba:

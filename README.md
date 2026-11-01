@@ -30,9 +30,9 @@ This installs Crystal dependencies and the native POD5 library, then builds
 Linux ARM64 and macOS ARM64; see [pod5.cr](https://github.com/kojix2/pod5.cr)
 for other platforms. Python is needed only for tests.
 
-Dependencies have no commit pins in [shard.yml](shard.yml).
-[shard.lock](shard.lock) records resolved versions; use `shards update` to
-refresh them.
+Runtime dependencies track `main` in [shard.yml](shard.yml). Development builds
+run `shards update` to use their latest commits; [shard.lock](shard.lock) records
+the most recent resolution.
 
 ## Run
 
