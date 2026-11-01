@@ -1,3 +1,16 @@
+## Upstream receive flow control validation (2026-11-01)
+
+Rebuilt from the declared `main` dependencies, including grpc.cr
+[`94c4507`](https://github.com/kojix2/grpc/commit/94c4507ba5292d95ec3af24e5a57f44c4d1423dd).
+The upstream fix couples streaming receive credit to consumption instead of
+rejecting coalesced messages by count. No Moleflow pacing or buffer limits changed.
+
+On Linux x86_64 / Crystal 1.22.1, `scripts/test.sh` passed formatting, Ameba,
+29 Crystal specs, independent Python plain/TLS gRPC, 3,000-channel integration,
+five edge cases, explicit slow-consumer termination, and POD5 interoperability
+for all 11 generated reads. `shard.lock` records this tested resolution; builds
+continue to update the `main` dependencies.
+
 ## Repository integration validation (2026-10-30)
 
 Validated with mise-managed Crystal 1.22.1 on Linux x86_64 and native POD5

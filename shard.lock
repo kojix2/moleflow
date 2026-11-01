@@ -6,15 +6,15 @@ shards:
 
   grpc:
     git: https://github.com/kojix2/grpc.git
-    version: 0.1.0+git.commit.867a084acf52ae6713522171097bd2a257bcc73c
+    version: 0.1.0+git.commit.94c4507ba5292d95ec3af24e5a57f44c4d1423dd
 
   minknow:
     git: https://github.com/kojix2/minknow.git
-    version: 0.1.0+git.commit.1b7df10fa6eb53bb1e3687c5da2b4d9b19f3e60b
+    version: 0.1.0+git.commit.e925e92487ca3627baa912a2c792abc207b4542e
 
   pod5:
     git: https://github.com/kojix2/pod5.cr.git
-    version: 0.1.0+git.commit.ab463468ddf02a060bcef98be195ab279d33af5e
+    version: 0.1.0+git.commit.fdb26ebe7e0e0420c4e2f7ca98f4eb252c550917
 
   proto:
     git: https://github.com/kojix2/proto.git
