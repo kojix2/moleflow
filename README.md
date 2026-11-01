@@ -1,5 +1,8 @@
 # Moleflow
 
+[![Test](https://github.com/kojix2/moleflow/actions/workflows/test.yml/badge.svg)](https://github.com/kojix2/moleflow/actions/workflows/test.yml)
+[![Lines of Code](https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Fkojix2%2Fmoleflow%2Flines)](https://tokei.kojix2.net/github/kojix2/moleflow)
+
 MinKNOW Read Until simulator in Crystal. Stream synthetic or replayed nanopore
 signals over gRPC, handle unblock/stop-data actions, or generate signals offline.
 
