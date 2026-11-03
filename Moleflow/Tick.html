@@ -152,6 +152,11 @@
       
     </li>
   
+  <li class=" " data-id="moleflow/Moleflow/Observer" data-name="moleflow::observer">
+      <a href="../Moleflow/Observer.html">Observer</a>
+      
+    </li>
+  
   <li class=" " data-id="moleflow/Moleflow/Output" data-name="moleflow::output">
       <a href="../Moleflow/Output.html">Output</a>
       
@@ -169,6 +174,21 @@
   
   <li class=" " data-id="moleflow/Moleflow/ProtocolValidation" data-name="moleflow::protocolvalidation">
       <a href="../Moleflow/ProtocolValidation.html">ProtocolValidation</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/ReadProgress" data-name="moleflow::readprogress">
+      <a href="../Moleflow/ReadProgress.html">ReadProgress</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/RecordedRead" data-name="moleflow::recordedread">
+      <a href="../Moleflow/RecordedRead.html">RecordedRead</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Recording" data-name="moleflow::recording">
+      <a href="../Moleflow/Recording.html">Recording</a>
       
     </li>
   
@@ -293,7 +313,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/engine.cr#L7" target="_blank">
+      <a href="https://github.com/kojix2/moleflow/blob/dcfb0d9947f275308c07c637a1cd3ef616ad5930/src/moleflow/engine.cr#L8" target="_blank">
         moleflow/engine.cr
       </a>
     
@@ -316,7 +336,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28chunks%3AArray%28Chunk%29%2Cfinished%3AArray%28Finished%29%29-class-method" class="signature"><strong>.new</strong>(chunks : Array(Chunk), finished : Array(Finished))</a>
+        <a href="#new%28chunks%3AArray%28Chunk%29%2Cfinished%3AArray%28Finished%29%2Cprogress%3AArray%28ReadProgress%29%3D%5B%5DofReadProgress%29-class-method" class="signature"><strong>.new</strong>(chunks : Array(Chunk), finished : Array(Finished), progress : Array(ReadProgress) = <span class="o">[]</span> <span class="k">of</span> <span class="t">ReadProgress</span>)</a>
         
       </li>
     
@@ -349,12 +369,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with%28chunks_chunks%3D%40chunks%2Cfinished_finished%3D%40finished%29-instance-method" class="signature"><strong>#copy_with</strong>(chunks _chunks = @chunks, finished _finished = @finished)</a>
+        <a href="#copy_with%28chunks_chunks%3D%40chunks%2Cfinished_finished%3D%40finished%2Cprogress_progress%3D%40progress%29-instance-method" class="signature"><strong>#copy_with</strong>(chunks _chunks = @chunks, finished _finished = @finished, progress _progress = @progress)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#finished%3AArray%28Finished%29-instance-method" class="signature"><strong>#finished</strong> : Array(Finished)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#progress%3AArray%28ReadProgress%29-instance-method" class="signature"><strong>#progress</strong> : Array(ReadProgress)</a>
         
       </li>
     
@@ -415,18 +440,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(chunks:Array(Chunk),finished:Array(Finished))-class-method">
+    <div class="entry-detail" id="new(chunks:Array(Chunk),finished:Array(Finished),progress:Array(ReadProgress)=[]ofReadProgress)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(chunks : Array(<a href="../Moleflow/Chunk.html">Chunk</a>), finished : Array(<a href="../Moleflow/Finished.html">Finished</a>))
+        def self.<strong>new</strong>(chunks : Array(<a href="../Moleflow/Chunk.html">Chunk</a>), finished : Array(<a href="../Moleflow/Finished.html">Finished</a>), progress : Array(<a href="../Moleflow/ReadProgress.html">ReadProgress</a>) = <span class="o">[]</span> <span class="k">of</span> <span class="t">ReadProgress</span>)
 
-        <a class="method-permalink" href="#new%28chunks%3AArray%28Chunk%29%2Cfinished%3AArray%28Finished%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28chunks%3AArray%28Chunk%29%2Cfinished%3AArray%28Finished%29%2Cprogress%3AArray%28ReadProgress%29%3D%5B%5DofReadProgress%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/engine.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/moleflow/blob/dcfb0d9947f275308c07c637a1cd3ef616ad5930/src/moleflow/engine.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -472,23 +497,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/engine.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/moleflow/blob/dcfb0d9947f275308c07c637a1cd3ef616ad5930/src/moleflow/engine.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(chunks_chunks=@chunks,finished_finished=@finished)-instance-method">
+    <div class="entry-detail" id="copy_with(chunks_chunks=@chunks,finished_finished=@finished,progress_progress=@progress)-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(chunks _chunks = @chunks, finished _finished = @finished)
+        def <strong>copy_with</strong>(chunks _chunks = @chunks, finished _finished = @finished, progress _progress = @progress)
 
-        <a class="method-permalink" href="#copy_with%28chunks_chunks%3D%40chunks%2Cfinished_finished%3D%40finished%29-instance-method">#</a>
+        <a class="method-permalink" href="#copy_with%28chunks_chunks%3D%40chunks%2Cfinished_finished%3D%40finished%2Cprogress_progress%3D%40progress%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/engine.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/moleflow/blob/dcfb0d9947f275308c07c637a1cd3ef616ad5930/src/moleflow/engine.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -499,6 +524,20 @@
         def <strong>finished</strong> : Array(<a href="../Moleflow/Finished.html">Finished</a>)
 
         <a class="method-permalink" href="#finished%3AArray%28Finished%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="progress:Array(ReadProgress)-instance-method">
+      <div class="signature">
+        
+        def <strong>progress</strong> : Array(<a href="../Moleflow/ReadProgress.html">ReadProgress</a>)
+
+        <a class="method-permalink" href="#progress%3AArray%28ReadProgress%29-instance-method">#</a>
       </div>
       
       <br/>

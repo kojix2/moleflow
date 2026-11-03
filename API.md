@@ -46,3 +46,25 @@ No authentication is emulated. TLS uses the provided server certificate; configu
 the client's trusted CA (e.g. MINKNOW_TRUSTED_CA) appropriately. Default binding is
 loopback. Do not assume compatibility with every readfish/Read Until release based
 on the metadata version; the included independent tests define the tested subset.
+
+## In-process observations and recordings
+
+Pass an optional `Moleflow::Observer` to `Application` to receive physical
+`ReadProgress` snapshots in `on_progress`. These include stopped-data reads:
+Accept stops live-read delivery, while their sample cursor continues advancing.
+A nonempty `end_reason` identifies a terminal snapshot. Rejected/interrupted
+reads can end before `total_samples`. Snapshots are values captured by signal
+workers and delivered on the coordinator; consumers own channel filtering and
+throttling and must return promptly. They are observations, not policy inputs.
+Direct `Engine`/`Pool` users can request these snapshots with `observe: true`
+and read `Tick#progress`; observation is disabled by default.
+
+`on_recording_closed(directory)` runs after output has successfully drained and
+closed. `Moleflow::Recording` exposes the same completion through `complete?`.
+Its `read_available` method yields flushed `RecordedRead` metadata once, waits
+for complete JSONL lines, and maintains its own cursor. `drained?` combines the
+completion marker and cursor position. `read_signal(read, max_bytes: limit)`
+checks identifiers, allocation bounds and signal length before reading ADC.
+Older recordings without a completion marker remain readable; their completion
+cannot be inferred. POD5 conversion uses the same metadata type and existing
+pod5.cr writer.

@@ -152,6 +152,11 @@
       
     </li>
   
+  <li class=" " data-id="moleflow/Moleflow/Observer" data-name="moleflow::observer">
+      <a href="../../Moleflow/Observer.html">Observer</a>
+      
+    </li>
+  
   <li class=" " data-id="moleflow/Moleflow/Output" data-name="moleflow::output">
       <a href="../../Moleflow/Output.html">Output</a>
       
@@ -169,6 +174,21 @@
   
   <li class=" " data-id="moleflow/Moleflow/ProtocolValidation" data-name="moleflow::protocolvalidation">
       <a href="../../Moleflow/ProtocolValidation.html">ProtocolValidation</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/ReadProgress" data-name="moleflow::readprogress">
+      <a href="../../Moleflow/ReadProgress.html">ReadProgress</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/RecordedRead" data-name="moleflow::recordedread">
+      <a href="../../Moleflow/RecordedRead.html">RecordedRead</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Recording" data-name="moleflow::recording">
+      <a href="../../Moleflow/Recording.html">Recording</a>
       
     </li>
   
@@ -257,16 +277,10 @@
 <h1 class="type-name">
 
   <span class="kind">
-    class
+    alias
   </span> Moleflow::<wbr>Formats::<wbr>OutputRow
 
 </h1>
-
-
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Moleflow/Formats/OutputRow.html">Moleflow::Formats::OutputRow</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
 
 
 
@@ -275,18 +289,18 @@
 
 
   <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
+    <a id="alias-definition" class="anchor" href="#alias-definition">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Included Modules
+    Alias Definition
   </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">JSON::Serializable</li>
-    
-  </ul>
+  <code><a href="../../Moleflow/RecordedRead.html">Moleflow::RecordedRead</a></code>
+
+
+
+
 
 
 
@@ -307,7 +321,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L16" target="_blank">
+      <a href="https://github.com/kojix2/moleflow/blob/dcfb0d9947f275308c07c637a1cd3ef616ad5930/src/moleflow/formats.cr#L17" target="_blank">
         moleflow/formats.cr
       </a>
     
@@ -319,276 +333,25 @@
 
 
   
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28%2A%2C__pull_for_json_serializablepull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(*, __pull_for_json_serializable pull : JSON::PullParser)</a>
-        
-      </li>
-    
-  </ul>
-
 
   
 
   
 
   
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#channel%3AUInt32-instance-method" class="signature"><strong>#channel</strong> : UInt32</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#end_reason%3AString-instance-method" class="signature"><strong>#end_reason</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#number%3AUInt32-instance-method" class="signature"><strong>#number</strong> : UInt32</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#read_id%3AString-instance-method" class="signature"><strong>#read_id</strong> : String</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample_count%3AInt64-instance-method" class="signature"><strong>#sample_count</strong> : Int64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#start_sample%3AUInt64-instance-method" class="signature"><strong>#start_sample</strong> : UInt64</a>
-        
-      </li>
-    
-  </ul>
-
 
 
   <div class="methods-inherited">
     
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
   </div>
 
   
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(pull : JSON::PullParser)
-
-        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L17" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new(*,__pull_for_json_serializablepull:JSON::PullParser)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(*, __pull_for_json_serializable pull : JSON::PullParser)
-
-        <a class="method-permalink" href="#new%28%2A%2C__pull_for_json_serializablepull%3AJSON%3A%3APullParser%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L17" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
   
 
   
 
   
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="channel:UInt32-instance-method">
-      <div class="signature">
-        
-        def <strong>channel</strong> : UInt32
-
-        <a class="method-permalink" href="#channel%3AUInt32-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L20" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="end_reason:String-instance-method">
-      <div class="signature">
-        
-        def <strong>end_reason</strong> : String
-
-        <a class="method-permalink" href="#end_reason%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L23" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="number:UInt32-instance-method">
-      <div class="signature">
-        
-        def <strong>number</strong> : UInt32
-
-        <a class="method-permalink" href="#number%3AUInt32-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="read_id:String-instance-method">
-      <div class="signature">
-        
-        def <strong>read_id</strong> : String
-
-        <a class="method-permalink" href="#read_id%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L18" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample_count:Int64-instance-method">
-      <div class="signature">
-        
-        def <strong>sample_count</strong> : Int64
-
-        <a class="method-permalink" href="#sample_count%3AInt64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L19" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="start_sample:UInt64-instance-method">
-      <div class="signature">
-        
-        def <strong>start_sample</strong> : UInt64
-
-        <a class="method-permalink" href="#start_sample%3AUInt64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/formats.cr#L22" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
 
 </div>
