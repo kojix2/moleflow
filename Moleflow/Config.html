@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.21.0">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="moleflow">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="moleflow">
+  <title>Moleflow::Config - moleflow main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          moleflow
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="moleflow/Moleflow" data-name="moleflow">
+      <a href="../Moleflow.html">Moleflow</a>
+      
+        <ul>
+  
+  <li class=" " data-id="moleflow/Moleflow/Action" data-name="moleflow::action">
+      <a href="../Moleflow/Action.html">Action</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Api" data-name="moleflow::api">
+      <a href="../Moleflow/Api.html">Api</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Application" data-name="moleflow::application">
+      <a href="../Moleflow/Application.html">Application</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/AsyncOutput" data-name="moleflow::asyncoutput">
+      <a href="../Moleflow/AsyncOutput.html">AsyncOutput</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Chunk" data-name="moleflow::chunk">
+      <a href="../Moleflow/Chunk.html">Chunk</a>
+      
+    </li>
+  
+  <li class=" current" data-id="moleflow/Moleflow/Config" data-name="moleflow::config">
+      <a href="../Moleflow/Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/D" data-name="moleflow::d">
+      <a href="../Moleflow/D.html">D</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Engine" data-name="moleflow::engine">
+      <a href="../Moleflow/Engine.html">Engine</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Finished" data-name="moleflow::finished">
+      <a href="../Moleflow/Finished.html">Finished</a>
+      
+    </li>
+  
+  <li class="parent " data-id="moleflow/Moleflow/Formats" data-name="moleflow::formats">
+      <a href="../Moleflow/Formats.html">Formats</a>
+      
+        <ul>
+  
+  <li class=" " data-id="moleflow/Moleflow/Formats/OutputConfig" data-name="moleflow::formats::outputconfig">
+      <a href="../Moleflow/Formats/OutputConfig.html">OutputConfig</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Formats/OutputRow" data-name="moleflow::formats::outputrow">
+      <a href="../Moleflow/Formats/OutputRow.html">OutputRow</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Job" data-name="moleflow::job">
+      <a href="../Moleflow/Job.html">Job</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/LiveSession" data-name="moleflow::livesession">
+      <a href="../Moleflow/LiveSession.html">LiveSession</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Model" data-name="moleflow::model">
+      <a href="../Moleflow/Model.html">Model</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Molecule" data-name="moleflow::molecule">
+      <a href="../Moleflow/Molecule.html">Molecule</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Noise" data-name="moleflow::noise">
+      <a href="../Moleflow/Noise.html">Noise</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Output" data-name="moleflow::output">
+      <a href="../Moleflow/Output.html">Output</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Pool" data-name="moleflow::pool">
+      <a href="../Moleflow/Pool.html">Pool</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Pore" data-name="moleflow::pore">
+      <a href="../Moleflow/Pore.html">Pore</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/ProtocolValidation" data-name="moleflow::protocolvalidation">
+      <a href="../Moleflow/ProtocolValidation.html">ProtocolValidation</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Reply" data-name="moleflow::reply">
+      <a href="../Moleflow/Reply.html">Reply</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/ResponseEncoder" data-name="moleflow::responseencoder">
+      <a href="../Moleflow/ResponseEncoder.html">ResponseEncoder</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/SampleConfig" data-name="moleflow::sampleconfig">
+      <a href="../Moleflow/SampleConfig.html">SampleConfig</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Source" data-name="moleflow::source">
+      <a href="../Moleflow/Source.html">Source</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/StreamSettings" data-name="moleflow::streamsettings">
+      <a href="../Moleflow/StreamSettings.html">StreamSettings</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/Moleflow/Tick" data-name="moleflow::tick">
+      <a href="../Moleflow/Tick.html">Tick</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="moleflow/NanoporeGUI" data-name="nanoporegui">
+      <a href="../NanoporeGUI.html">NanoporeGUI</a>
+      
+        <ul>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Document" data-name="nanoporegui::document">
+      <a href="../NanoporeGUI/Document.html">Document</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Field" data-name="nanoporegui::field">
+      <a href="../NanoporeGUI/Field.html">Field</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/LogBuffer" data-name="nanoporegui::logbuffer">
+      <a href="../NanoporeGUI/LogBuffer.html">LogBuffer</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Profile" data-name="nanoporegui::profile">
+      <a href="../NanoporeGUI/Profile.html">Profile</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Runner" data-name="nanoporegui::runner">
+      <a href="../NanoporeGUI/Runner.html">Runner</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Window" data-name="nanoporegui::window">
+      <a href="../NanoporeGUI/Window.html">Window</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> Moleflow::<wbr>Config
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Moleflow/Config.html">Moleflow::Config</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">JSON::Serializable</li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L14" target="_blank">
+        moleflow/config.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28pull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(pull : JSON::PullParser)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28%2A%2C__pull_for_json_serializablepull%3AJSON%3A%3APullParser%29-class-method" class="signature"><strong>.new</strong>(*, __pull_for_json_serializable pull : JSON::PullParser)</a>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#adapter_signal%3AString%7CNil-instance-method" class="signature"><strong>#adapter_signal</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#adapter_signal%3D%28adapter_signal%3AString%7CNil%29-instance-method" class="signature"><strong>#adapter_signal=</strong>(adapter_signal : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#channels%3AInt32-instance-method" class="signature"><strong>#channels</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#channels%3D%28channels%3AInt32%29-instance-method" class="signature"><strong>#channels=</strong>(channels : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chunk_ms%3AInt32-instance-method" class="signature"><strong>#chunk_ms</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#chunk_ms%3D%28chunk_ms%3AInt32%29-instance-method" class="signature"><strong>#chunk_ms=</strong>(chunk_ms : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#death_probability%3AFloat64-instance-method" class="signature"><strong>#death_probability</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#death_probability%3D%28death_probability%3AFloat64%29-instance-method" class="signature"><strong>#death_probability=</strong>(death_probability : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#device_id%3AString-instance-method" class="signature"><strong>#device_id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#device_id%3D%28device_id%3AString%29-instance-method" class="signature"><strong>#device_id=</strong>(device_id : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#duration_seconds%3AFloat64-instance-method" class="signature"><strong>#duration_seconds</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#duration_seconds%3D%28duration_seconds%3AFloat64%29-instance-method" class="signature"><strong>#duration_seconds=</strong>(duration_seconds : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#host%3AString-instance-method" class="signature"><strong>#host</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#host%3D%28host%3AString%29-instance-method" class="signature"><strong>#host=</strong>(host : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#manager_port%3AInt32-instance-method" class="signature"><strong>#manager_port</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#manager_port%3D%28manager_port%3AInt32%29-instance-method" class="signature"><strong>#manager_port=</strong>(manager_port : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_batch_channels%3AInt32-instance-method" class="signature"><strong>#max_batch_channels</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_batch_channels%3D%28max_batch_channels%3AInt32%29-instance-method" class="signature"><strong>#max_batch_channels=</strong>(max_batch_channels : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_chunk_samples%3AInt32-instance-method" class="signature"><strong>#max_chunk_samples</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_chunk_samples%3D%28max_chunk_samples%3AInt32%29-instance-method" class="signature"><strong>#max_chunk_samples=</strong>(max_chunk_samples : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_read_bases%3AInt32-instance-method" class="signature"><strong>#max_read_bases</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_read_bases%3D%28max_read_bases%3AInt32%29-instance-method" class="signature"><strong>#max_read_bases=</strong>(max_read_bases : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_reference_bytes%3AInt64-instance-method" class="signature"><strong>#max_reference_bytes</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_reference_bytes%3D%28max_reference_bytes%3AInt64%29-instance-method" class="signature"><strong>#max_reference_bytes=</strong>(max_reference_bytes : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mean_read_length%3AFloat64-instance-method" class="signature"><strong>#mean_read_length</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mean_read_length%3D%28mean_read_length%3AFloat64%29-instance-method" class="signature"><strong>#mean_read_length=</strong>(mean_read_length : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#model%3AString%7CNil-instance-method" class="signature"><strong>#model</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#model%3D%28model%3AString%7CNil%29-instance-method" class="signature"><strong>#model=</strong>(model : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#noise_pa%3AFloat64-instance-method" class="signature"><strong>#noise_pa</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#noise_pa%3D%28noise_pa%3AFloat64%29-instance-method" class="signature"><strong>#noise_pa=</strong>(noise_pa : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#offset%3AFloat64-instance-method" class="signature"><strong>#offset</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#offset%3D%28offset%3AFloat64%29-instance-method" class="signature"><strong>#offset=</strong>(offset : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output%3AString%7CNil-instance-method" class="signature"><strong>#output</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output%3D%28output%3AString%7CNil%29-instance-method" class="signature"><strong>#output=</strong>(output : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#position_port%3AInt32-instance-method" class="signature"><strong>#position_port</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#position_port%3D%28position_port%3AInt32%29-instance-method" class="signature"><strong>#position_port=</strong>(position_port : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reacquire_seconds%3AFloat64-instance-method" class="signature"><strong>#reacquire_seconds</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reacquire_seconds%3D%28reacquire_seconds%3AFloat64%29-instance-method" class="signature"><strong>#reacquire_seconds=</strong>(reacquire_seconds : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_length_sigma%3AFloat64-instance-method" class="signature"><strong>#read_length_sigma</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_length_sigma%3D%28read_length_sigma%3AFloat64%29-instance-method" class="signature"><strong>#read_length_sigma=</strong>(read_length_sigma : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_rate%3AInt32-instance-method" class="signature"><strong>#sample_rate</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_rate%3D%28sample_rate%3AInt32%29-instance-method" class="signature"><strong>#sample_rate=</strong>(sample_rate : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#samples%3AArray%28SampleConfig%29-instance-method" class="signature"><strong>#samples</strong> : Array(SampleConfig)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#samples%3D%28samples%3AArray%28SampleConfig%29%29-instance-method" class="signature"><strong>#samples=</strong>(samples : Array(SampleConfig))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scale%3AFloat64-instance-method" class="signature"><strong>#scale</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scale%3D%28scale%3AFloat64%29-instance-method" class="signature"><strong>#scale=</strong>(scale : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seed%3AUInt64-instance-method" class="signature"><strong>#seed</strong> : UInt64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seed%3D%28seed%3AUInt64%29-instance-method" class="signature"><strong>#seed=</strong>(seed : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sequencing_speed%3AFloat64-instance-method" class="signature"><strong>#sequencing_speed</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sequencing_speed%3D%28sequencing_speed%3AFloat64%29-instance-method" class="signature"><strong>#sequencing_speed=</strong>(sequencing_speed : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stream_queue%3AInt32-instance-method" class="signature"><strong>#stream_queue</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stream_queue%3D%28stream_queue%3AInt32%29-instance-method" class="signature"><strong>#stream_queue=</strong>(stream_queue : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tls_cert%3AString%7CNil-instance-method" class="signature"><strong>#tls_cert</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tls_cert%3D%28tls_cert%3AString%7CNil%29-instance-method" class="signature"><strong>#tls_cert=</strong>(tls_cert : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tls_key%3AString%7CNil-instance-method" class="signature"><strong>#tls_key</strong> : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tls_key%3D%28tls_key%3AString%7CNil%29-instance-method" class="signature"><strong>#tls_key=</strong>(tls_key : String | Nil)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#validate%21-instance-method" class="signature"><strong>#validate!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#workers%3AInt32-instance-method" class="signature"><strong>#workers</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#workers%3D%28workers%3AInt32%29-instance-method" class="signature"><strong>#workers=</strong>(workers : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#working_fraction%3AFloat64-instance-method" class="signature"><strong>#working_fraction</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#working_fraction%3D%28working_fraction%3AFloat64%29-instance-method" class="signature"><strong>#working_fraction=</strong>(working_fraction : Float64)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(pull:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(pull : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28pull%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(*,__pull_for_json_serializablepull:JSON::PullParser)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(*, __pull_for_json_serializable pull : JSON::PullParser)
+
+        <a class="method-permalink" href="#new%28%2A%2C__pull_for_json_serializablepull%3AJSON%3A%3APullParser%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="adapter_signal:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>adapter_signal</strong> : String | Nil
+
+        <a class="method-permalink" href="#adapter_signal%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="adapter_signal=(adapter_signal:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>adapter_signal=</strong>(adapter_signal : String | Nil)
+
+        <a class="method-permalink" href="#adapter_signal%3D%28adapter_signal%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="channels:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>channels</strong> : Int32
+
+        <a class="method-permalink" href="#channels%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="channels=(channels:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>channels=</strong>(channels : Int32)
+
+        <a class="method-permalink" href="#channels%3D%28channels%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chunk_ms:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>chunk_ms</strong> : Int32
+
+        <a class="method-permalink" href="#chunk_ms%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="chunk_ms=(chunk_ms:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>chunk_ms=</strong>(chunk_ms : Int32)
+
+        <a class="method-permalink" href="#chunk_ms%3D%28chunk_ms%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="death_probability:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>death_probability</strong> : Float64
+
+        <a class="method-permalink" href="#death_probability%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="death_probability=(death_probability:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>death_probability=</strong>(death_probability : Float64)
+
+        <a class="method-permalink" href="#death_probability%3D%28death_probability%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="device_id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>device_id</strong> : String
+
+        <a class="method-permalink" href="#device_id%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="device_id=(device_id:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>device_id=</strong>(device_id : String)
+
+        <a class="method-permalink" href="#device_id%3D%28device_id%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="duration_seconds:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>duration_seconds</strong> : Float64
+
+        <a class="method-permalink" href="#duration_seconds%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="duration_seconds=(duration_seconds:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>duration_seconds=</strong>(duration_seconds : Float64)
+
+        <a class="method-permalink" href="#duration_seconds%3D%28duration_seconds%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="host:String-instance-method">
+      <div class="signature">
+        
+        def <strong>host</strong> : String
+
+        <a class="method-permalink" href="#host%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="host=(host:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>host=</strong>(host : String)
+
+        <a class="method-permalink" href="#host%3D%28host%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="manager_port:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>manager_port</strong> : Int32
+
+        <a class="method-permalink" href="#manager_port%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="manager_port=(manager_port:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>manager_port=</strong>(manager_port : Int32)
+
+        <a class="method-permalink" href="#manager_port%3D%28manager_port%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L41" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_batch_channels:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>max_batch_channels</strong> : Int32
+
+        <a class="method-permalink" href="#max_batch_channels%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_batch_channels=(max_batch_channels:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>max_batch_channels=</strong>(max_batch_channels : Int32)
+
+        <a class="method-permalink" href="#max_batch_channels%3D%28max_batch_channels%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_chunk_samples:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>max_chunk_samples</strong> : Int32
+
+        <a class="method-permalink" href="#max_chunk_samples%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_chunk_samples=(max_chunk_samples:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>max_chunk_samples=</strong>(max_chunk_samples : Int32)
+
+        <a class="method-permalink" href="#max_chunk_samples%3D%28max_chunk_samples%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_read_bases:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>max_read_bases</strong> : Int32
+
+        <a class="method-permalink" href="#max_read_bases%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_read_bases=(max_read_bases:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>max_read_bases=</strong>(max_read_bases : Int32)
+
+        <a class="method-permalink" href="#max_read_bases%3D%28max_read_bases%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_reference_bytes:Int64-instance-method">
+      <div class="signature">
+        
+        def <strong>max_reference_bytes</strong> : Int64
+
+        <a class="method-permalink" href="#max_reference_bytes%3AInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_reference_bytes=(max_reference_bytes:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong>max_reference_bytes=</strong>(max_reference_bytes : Int64)
+
+        <a class="method-permalink" href="#max_reference_bytes%3D%28max_reference_bytes%3AInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mean_read_length:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>mean_read_length</strong> : Float64
+
+        <a class="method-permalink" href="#mean_read_length%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mean_read_length=(mean_read_length:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>mean_read_length=</strong>(mean_read_length : Float64)
+
+        <a class="method-permalink" href="#mean_read_length%3D%28mean_read_length%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="model:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>model</strong> : String | Nil
+
+        <a class="method-permalink" href="#model%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="model=(model:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>model=</strong>(model : String | Nil)
+
+        <a class="method-permalink" href="#model%3D%28model%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="noise_pa:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>noise_pa</strong> : Float64
+
+        <a class="method-permalink" href="#noise_pa%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="noise_pa=(noise_pa:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>noise_pa=</strong>(noise_pa : Float64)
+
+        <a class="method-permalink" href="#noise_pa%3D%28noise_pa%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="offset:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>offset</strong> : Float64
+
+        <a class="method-permalink" href="#offset%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="offset=(offset:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>offset=</strong>(offset : Float64)
+
+        <a class="method-permalink" href="#offset%3D%28offset%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>output</strong> : String | Nil
+
+        <a class="method-permalink" href="#output%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output=(output:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>output=</strong>(output : String | Nil)
+
+        <a class="method-permalink" href="#output%3D%28output%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="position_port:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>position_port</strong> : Int32
+
+        <a class="method-permalink" href="#position_port%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="position_port=(position_port:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>position_port=</strong>(position_port : Int32)
+
+        <a class="method-permalink" href="#position_port%3D%28position_port%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reacquire_seconds:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>reacquire_seconds</strong> : Float64
+
+        <a class="method-permalink" href="#reacquire_seconds%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reacquire_seconds=(reacquire_seconds:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>reacquire_seconds=</strong>(reacquire_seconds : Float64)
+
+        <a class="method-permalink" href="#reacquire_seconds%3D%28reacquire_seconds%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_length_sigma:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>read_length_sigma</strong> : Float64
+
+        <a class="method-permalink" href="#read_length_sigma%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_length_sigma=(read_length_sigma:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>read_length_sigma=</strong>(read_length_sigma : Float64)
+
+        <a class="method-permalink" href="#read_length_sigma%3D%28read_length_sigma%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_rate:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_rate</strong> : Int32
+
+        <a class="method-permalink" href="#sample_rate%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_rate=(sample_rate:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_rate=</strong>(sample_rate : Int32)
+
+        <a class="method-permalink" href="#sample_rate%3D%28sample_rate%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="samples:Array(SampleConfig)-instance-method">
+      <div class="signature">
+        
+        def <strong>samples</strong> : Array(<a href="../Moleflow/SampleConfig.html">SampleConfig</a>)
+
+        <a class="method-permalink" href="#samples%3AArray%28SampleConfig%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="samples=(samples:Array(SampleConfig))-instance-method">
+      <div class="signature">
+        
+        def <strong>samples=</strong>(samples : Array(<a href="../Moleflow/SampleConfig.html">SampleConfig</a>))
+
+        <a class="method-permalink" href="#samples%3D%28samples%3AArray%28SampleConfig%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scale:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>scale</strong> : Float64
+
+        <a class="method-permalink" href="#scale%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scale=(scale:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>scale=</strong>(scale : Float64)
+
+        <a class="method-permalink" href="#scale%3D%28scale%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seed:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>seed</strong> : UInt64
+
+        <a class="method-permalink" href="#seed%3AUInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seed=(seed:UInt64)-instance-method">
+      <div class="signature">
+        
+        def <strong>seed=</strong>(seed : UInt64)
+
+        <a class="method-permalink" href="#seed%3D%28seed%3AUInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sequencing_speed:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>sequencing_speed</strong> : Float64
+
+        <a class="method-permalink" href="#sequencing_speed%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sequencing_speed=(sequencing_speed:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>sequencing_speed=</strong>(sequencing_speed : Float64)
+
+        <a class="method-permalink" href="#sequencing_speed%3D%28sequencing_speed%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stream_queue:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>stream_queue</strong> : Int32
+
+        <a class="method-permalink" href="#stream_queue%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stream_queue=(stream_queue:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>stream_queue=</strong>(stream_queue : Int32)
+
+        <a class="method-permalink" href="#stream_queue%3D%28stream_queue%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tls_cert:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>tls_cert</strong> : String | Nil
+
+        <a class="method-permalink" href="#tls_cert%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tls_cert=(tls_cert:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>tls_cert=</strong>(tls_cert : String | Nil)
+
+        <a class="method-permalink" href="#tls_cert%3D%28tls_cert%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tls_key:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>tls_key</strong> : String | Nil
+
+        <a class="method-permalink" href="#tls_key%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tls_key=(tls_key:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>tls_key=</strong>(tls_key : String | Nil)
+
+        <a class="method-permalink" href="#tls_key%3D%28tls_key%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate!-instance-method">
+      <div class="signature">
+        
+        def <strong>validate!</strong>
+
+        <a class="method-permalink" href="#validate%21-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="workers:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>workers</strong> : Int32
+
+        <a class="method-permalink" href="#workers%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="workers=(workers:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>workers=</strong>(workers : Int32)
+
+        <a class="method-permalink" href="#workers%3D%28workers%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="working_fraction:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>working_fraction</strong> : Float64
+
+        <a class="method-permalink" href="#working_fraction%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="working_fraction=(working_fraction:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>working_fraction=</strong>(working_fraction : Float64)
+
+        <a class="method-permalink" href="#working_fraction%3D%28working_fraction%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/moleflow/blob/ec9ce8e8ba008b1934cdd5996eea4614416088ab/src/moleflow/config.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>
