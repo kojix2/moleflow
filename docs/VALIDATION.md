@@ -8,15 +8,17 @@ rejecting coalesced messages by count. No Moleflow pacing or buffer limits chang
 On Linux x86_64 / Crystal 1.22.1, `scripts/test.sh` passed formatting, Ameba,
 29 Crystal specs, independent Python plain/TLS gRPC, 3,000-channel integration,
 five edge cases, explicit slow-consumer termination, and POD5 interoperability
-for all 11 generated reads. `shard.lock` records this tested resolution; builds
-continue to update the `main` dependencies.
+for all 11 generated reads. That check recorded its resolution in a local
+`shard.lock`; application lockfiles are no longer committed. Builds continue
+to update the `main` dependencies.
 
 ## Repository integration validation (2026-10-30)
 
 Validated with mise-managed Crystal 1.22.1 on Linux x86_64 and native POD5
 0.3.49, using upstream pod5.cr without bundled sources or a local override.
-Dependencies have no commit pins in `shard.yml`; `shard.lock` records the
-resolved versions. `shards update` selected pod5.cr `ab463468` and Ameba 1.7.0.
+Dependencies have no commit pins in `shard.yml`; the locally generated
+`shard.lock` recorded the versions used for this historical validation.
+`shards update` selected pod5.cr `ab463468` and Ameba 1.7.0.
 
 - Both release targets built with `sh scripts/build.sh`.
 - `sh scripts/test.sh` passed formatting, Ameba (23 files), all 29 Crystal
@@ -100,16 +102,17 @@ sh scripts/test.sh
 
 Revalidated on 2026-10-30 with the application-level Float extensions removed.
 
-The current dependency pins include the upstream gRPC transport fixes:
+That validation used the following revisions, including the upstream gRPC transport fixes:
 
 - gRPC: `867a084acf52ae6713522171097bd2a257bcc73c`.
 - proto: `675d91e11138e48aaeaa96e2325f42a8abe8a57e`.
 - MinKNOW: `1b7df10fa6eb53bb1e3687c5da2b4d9b19f3e60b`.
 
-Fresh installs with `shards install --frozen` succeeded without local patches.
-`shards build --release` uses the application target in `shard.yml` and the
-versions in `shard.lock`. Dependencies and binaries are created in `lib/` and `bin/` during
-the build rather than included in the source tree.
+At the time, fresh installs with `shards install --frozen` succeeded without
+local patches. Current development builds use `sh scripts/build.sh` to update
+dependencies; application lockfiles are no longer committed. Dependencies and
+binaries are created in `lib/` and `bin/` during the build rather than included
+in the source tree.
 The installed dependency sources match the pinned upstream files; installer
 metadata, dependency symlinks and unpopulated submodules are excluded from that
 comparison.

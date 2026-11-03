@@ -35,8 +35,9 @@ MIT-licensed dependencies: kojix2/grpc, kojix2/proto, kojix2/minknow,
 kojix2/pod5.cr, kojix2/uing (including libui-ng), and crystal-ameba/ameba
 (development only).
 The toolbar also uses kojix2/icon-radix, radix-ui/icons and naqvis/crimage (MIT).
-Resolved versions are recorded in shard.lock. Shards installs dependencies
-under lib/; retain their original copyright and license notices.
+Application lockfiles are not distributed. Shards records the local resolution
+in its generated shard.lock and installs dependencies under lib/; retain their
+original copyright and license notices.
 proto declares MIT in lib/proto/shard.yml; the resolved revision does not
 include a standalone LICENSE file.
 

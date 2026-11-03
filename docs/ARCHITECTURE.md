@@ -31,11 +31,11 @@ Disk shutdown waits at most six seconds, then reports incomplete output if the
 worker is still blocked. A blocked operating-system write is not cancelled.
 
 Application-level bounded queues do not replace transport-level backpressure.
-The pinned upstream gRPC dependency includes the transport fixes; no local
-patches are required. `shards install --frozen` restores the verified revisions.
-`shards build --release` installs dependencies and builds the application target
-declared in `shard.yml`.
-The pinned MinKNOW dependency includes regenerated Google protobuf types, so the
+The upstream gRPC dependency includes the transport fixes; no local patches are
+required. `sh scripts/build.sh` updates the declared dependency branches and
+builds the release targets. Application lockfiles are not committed; locally
+generated `shard.lock` files are ignored.
+The MinKNOW dependency includes regenerated Google protobuf types, so the
 application does not extend Crystal's Float types to support generated code.
 
 Formatting and Python lint checks (the development tools are version-pinned):

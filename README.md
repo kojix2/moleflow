@@ -6,6 +6,10 @@
 MinKNOW Read Until simulator in Crystal. Stream synthetic or replayed nanopore
 signals over gRPC, handle unblock/stop-data actions, or generate signals offline.
 
+Application lockfiles are not committed. The build script runs `shards update`
+to follow the declared dependency branches; locally generated `shard.lock` files
+are ignored by Git.
+
 ## Build
 
 Requires Crystal >= 1.22, Shards and C++20 build tools. From the repository root:
