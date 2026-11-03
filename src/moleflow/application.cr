@@ -2,27 +2,34 @@ require "./api"
 
 module Moleflow
   class Application
-    def initialize(@config : Config, @sources : Array(Source), @model : Model)
+    def initialize(@config : Config, @sources : Array(Source), @model : Model, @observer : Observer? = nil)
     end
 
     def simulate : Nil
       config, sources, model = @config, @sources, @model
       output = Output.new(config)
-      pool = Pool.new(config, sources, model)
+      pool = Pool.new(config, sources, model, observe: !@observer.nil?)
       begin
         step = Math.max(1_i64, config.chunk_ms.to_i64 * config.sample_rate // 1000)
         finish = (config.duration_seconds * config.sample_rate).to_i64
         at = 0_i64
         loop do
-          output.consume(pool.tick(at))
+          tick = pool.tick(at)
+          output.consume(tick)
+          @observer.try &.observe(tick.progress)
           break if at >= finish
           at += Math.min(step, finish - at)
         end
       ensure
         begin
-          output.consume(pool.close)
+          tick = pool.close
+          output.consume(tick)
+          @observer.try &.observe(tick.progress)
         ensure
           output.close
+          if directory = config.output
+            @observer.try &.on_recording_closed(directory)
+          end
         end
       end
       puts({reads: output.completed, samples: output.samples}.to_json)
@@ -36,10 +43,10 @@ module Moleflow
         manager.use_tls(cert: cert, key: (config.tls_key || raise "TLS key missing"))
         position.use_tls(cert: cert, key: (config.tls_key || raise "TLS key missing"))
       end
-      manager.handle(Api.new("manager", config, sources, model))
+      manager.handle(Api.new("manager", config, sources, model, @observer))
       apis = [] of Api
       ["data", "device", "instance", "analysis_configuration", "acquisition", "protocol", "log"].each do |kind|
-        api = Api.new(kind, config, sources, model)
+        api = Api.new(kind, config, sources, model, @observer)
         apis << api
         position.handle(api)
       end

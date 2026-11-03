@@ -11,14 +11,14 @@ module Moleflow
     @closed = false
     @channels : Int32
 
-    def initialize(config : Config, sources : Array(Source), model : Model)
+    def initialize(config : Config, sources : Array(Source), model : Model, observe : Bool = false)
       @channels = config.channels
       n = Math.min(config.workers, config.channels)
       @context = Fiber::ExecutionContext::Parallel.new("signal", n)
       @inboxes = Array.new(n) { Channel(Job).new(1) }
       @outboxes = Array.new(n) { Channel(Reply).new(1) }
       n.times do |i|
-        engine = Engine.new(config, sources, model, (1..config.channels).select { |ch| (ch - 1) % n == i })
+        engine = Engine.new(config, sources, model, (1..config.channels).select { |ch| (ch - 1) % n == i }, observe: observe)
         input, output = @inboxes[i], @outboxes[i]
         @context.spawn do
           while job = input.receive?
@@ -65,7 +65,8 @@ module Moleflow
           raise error
         end
       end
-      Tick.new(replies.flat_map { |reply| (reply.tick || raise "worker returned no tick").chunks }, replies.flat_map { |reply| (reply.tick || raise "worker returned no tick").finished })
+      ticks = replies.map { |reply| reply.tick || raise "worker returned no tick" }
+      Tick.new(ticks.flat_map(&.chunks), ticks.flat_map(&.finished), ticks.flat_map(&.progress))
     end
 
     def close : Tick

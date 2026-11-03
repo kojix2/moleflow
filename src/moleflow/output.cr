@@ -1,4 +1,5 @@
 require "./engine"
+require "./recording"
 
 module Moleflow
   # Single owner; raw chunks are appended immediately, never buffered for entire reads.
@@ -6,6 +7,7 @@ module Moleflow
     @summary : File?
     getter completed : Int64 = 0_i64
     getter samples : Int64 = 0_i64
+    @failed = false
 
     def initialize(@config : Config)
       if dir = @config.output
@@ -44,10 +46,16 @@ module Moleflow
           summary.flush
         end
       end
+    rescue error
+      @failed = true
+      raise error
     end
 
     def close
       @summary.try &.close
+      if !@failed && (directory = @config.output)
+        File.write(File.join(directory, Recording::COMPLETE_FILE), "")
+      end
     end
   end
 end

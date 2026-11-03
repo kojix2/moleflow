@@ -6,7 +6,7 @@ module Moleflow
     getter busy : Bool = false
     @used = false
 
-    def initialize(@kind : String, @config : Config, @sources : Array(Source), @model : Model)
+    def initialize(@kind : String, @config : Config, @sources : Array(Source), @model : Model, @observer : Observer? = nil)
       @service_full_name = "minknow_api.#{@kind}.#{@kind.split('_').map(&.capitalize).join}Service"
     end
 
@@ -100,7 +100,7 @@ module Moleflow
       @busy = true
       @used = true
       begin
-        LiveSession.new(@config, @sources, @model).run(requests, ctx, writer)
+        LiveSession.new(@config, @sources, @model, @observer).run(requests, ctx, writer)
       ensure
         @busy = false
       end

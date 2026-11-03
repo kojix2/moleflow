@@ -17,7 +17,7 @@ module Moleflow
     @outgoing : Channel(D::GetLiveReadsResponse)
     @sender_result = Channel(Exception?).new(1)
 
-    def initialize(@config : Config, @sources : Array(Source), @model : Model)
+    def initialize(@config : Config, @sources : Array(Source), @model : Model, @observer : Observer? = nil)
       @encoder = ResponseEncoder.new(config)
       @outgoing = Channel(D::GetLiveReadsResponse).new(config.stream_queue)
     end
@@ -33,7 +33,7 @@ module Moleflow
         setup = initial_setup
         dtype, max_samples = StreamSettings.validate(setup, 3, @config)
         output = AsyncOutput.new(@config)
-        pool = Pool.new(@config, @sources, @model)
+        pool = Pool.new(@config, @sources, @model, observe: !@observer.nil?)
         simulate(ctx, pool, output, setup, dtype, max_samples)
       rescue ex
         problem = ex
@@ -116,6 +116,7 @@ module Moleflow
         if now >= next_tick
           tick = pool.tick(sample)
           output.consume(tick)
+          @observer.try &.observe(tick.progress)
           @encoder.encode(tick, sample, setup, dtype).each { |response| enqueue(response) }
           break if sample >= end_at
           next_tick += @config.chunk_ms.milliseconds
@@ -173,9 +174,16 @@ module Moleflow
     end
 
     private def finish_output(pool : Pool?, output : AsyncOutput?) : Nil
-      output.try &.consume(pool.close) if pool
+      if pool
+        tick = pool.close
+        output.try &.consume(tick)
+        @observer.try &.observe(tick.progress)
+      end
     ensure
       output.try &.close
+      if output && (directory = @config.output)
+        @observer.try &.on_recording_closed(directory)
+      end
     end
 
     private def await_sender(ctx : GRPC::ServerContext) : Exception?

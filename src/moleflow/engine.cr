@@ -1,10 +1,11 @@
 require "./config"
 require "./molecule"
+require "./observer"
 
 module Moleflow
   record Chunk, read : Molecule, from : Int64, data : Bytes
   record Finished, read : Molecule, samples : Int64, reason : String
-  record Tick, chunks : Array(Chunk), finished : Array(Finished)
+  record Tick, chunks : Array(Chunk), finished : Array(Finished), progress : Array(ReadProgress) = [] of ReadProgress
   record Action, channel : Int32, read_id : String, unblock : Bool, duration : Float64 = 0.1, max_samples : Int64 = Int64::MAX
 
   class Pore
@@ -28,7 +29,7 @@ module Moleflow
     @tail = [] of Chunk
     @last_tick = 0_i64
 
-    def initialize(@config : Config, @sources : Array(Source), @model : Model, channels : Enumerable(Int32))
+    def initialize(@config : Config, @sources : Array(Source), @model : Model, channels : Enumerable(Int32), @observe : Bool = false)
       @pores = channels.map { |ch| Pore.new(ch, @config.seed, @config.working_fraction) }.to_a
       @total_weight = @sources.sum(&.weight)
     end
@@ -90,7 +91,7 @@ module Moleflow
           end
         end
       end
-      Tick.new(chunks, finished)
+      Tick.new(chunks, finished, progress(finished))
     end
 
     def finish(pore : Pore, at : Int64, unblock_duration : Float64)
@@ -141,7 +142,20 @@ module Moleflow
           pore.read = nil
         end
       end
-      Tick.new(tails, finished)
+      Tick.new(tails, finished, progress(finished))
+    end
+
+    private def progress(finished : Array(Finished)) : Array(ReadProgress)
+      return [] of ReadProgress unless @observe
+      snapshots = finished.map do |item|
+        ReadProgress.new(item.read.id, item.read.channel, item.samples, item.read.length, @config.sample_rate, item.reason)
+      end
+      pores.each do |pore|
+        if read = pore.read
+          snapshots << ReadProgress.new(read.id, read.channel, read.cursor, read.length, @config.sample_rate)
+        end
+      end
+      snapshots
     end
   end
 end

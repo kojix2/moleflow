@@ -1,6 +1,7 @@
 require "json"
 require "file_utils"
 require "pod5"
+require "./recording"
 
 module Moleflow
   # File conversion is separate from the live simulation and owns one read at a time.
@@ -13,15 +14,7 @@ module Moleflow
       getter seed : UInt64
     end
 
-    class OutputRow
-      include JSON::Serializable
-      getter read_id : String
-      getter sample_count : Int64
-      getter channel : UInt32
-      getter number : UInt32
-      getter start_sample : UInt64
-      getter end_reason : String
-    end
+    alias OutputRow = RecordedRead
 
     SCALE  = 0.1462070643901825
     OFFSET =             -243.0
@@ -62,7 +55,7 @@ module Moleflow
                      else                           Pod5::EndReason::ApiRequest
                      end
             metadata = Pod5::Metadata.new(read_id: id, run_info: run,
-              channel: row.channel, read_number: row.number,
+              channel: row.channel, read_number: row.number.to_u32,
               start_sample: row.start_sample, median_before: 100_f32,
               calibration_offset: offset, calibration_scale: scale,
               end_reason: reason, end_reason_forced: !reason.signal_positive?)
