@@ -1,5 +1,7 @@
 # Moleflow
 
+<img width="400" height="200" alt="moleflow" src="https://github.com/user-attachments/assets/045f265b-315c-442b-9f2b-d5bbd5a56263" />
+
 [![Test](https://github.com/kojix2/moleflow/actions/workflows/test.yml/badge.svg)](https://github.com/kojix2/moleflow/actions/workflows/test.yml)
 [![Lines of Code](https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Fkojix2%2Fmoleflow%2Flines)](https://tokei.kojix2.net/github/kojix2/moleflow)
 
