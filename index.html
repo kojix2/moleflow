@@ -333,6 +333,10 @@ the displayed working directory. The GUI launches the sibling <code>moleflow</co
 configure multiple samples, raw replay and TLS in the JSON tab.
 Ubuntu requires GTK 3; macOS uses native controls. GUI smoke tests:
 <code>sh scripts/test-gui.sh</code> (Linux also needs <code>xvfb</code> and <code>xauth</code>).</p>
+<p>On macOS, the build and GUI test scripts use <code>-Dwithout_mt</code> for the GUI as a
+workaround for Crystal execution contexts moving fibers off AppKit's required
+main thread. Manual GUI builds need the same flag. The CLI binaries retain
+execution contexts for their worker pools.</p>
 <h2><a id="record-and-replay" class="anchor" href="#record-and-replay">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>

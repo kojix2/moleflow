@@ -93,7 +93,7 @@ This document retains the validation summary; per-run logs and old measurement
 files are not part of the source tree. Reproduce the functional checks with:
 
 ```sh
-shards build --release
+sh scripts/build.sh
 python3 -m pip install -r requirements-test.txt
 sh scripts/test.sh
 ```
