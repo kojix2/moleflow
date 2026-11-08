@@ -64,6 +64,11 @@ configure multiple samples, raw replay and TLS in the JSON tab.
 Ubuntu requires GTK 3; macOS uses native controls. GUI smoke tests:
 `sh scripts/test-gui.sh` (Linux also needs `xvfb` and `xauth`).
 
+On macOS, the build and GUI test scripts use `-Dwithout_mt` for the GUI as a
+workaround for Crystal execution contexts moving fibers off AppKit's required
+main thread. Manual GUI builds need the same flag. The CLI binaries retain
+execution contexts for their worker pools.
+
 ## Record and replay
 
 Set `output` to a new directory to record metadata and raw ADC signals.
