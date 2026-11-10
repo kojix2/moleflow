@@ -242,6 +242,11 @@
       
     </li>
   
+  <li class=" " data-id="moleflow/NanoporeGUI/LanguagePicker" data-name="nanoporegui::languagepicker">
+      <a href="NanoporeGUI/LanguagePicker.html">LanguagePicker</a>
+      
+    </li>
+  
   <li class=" " data-id="moleflow/NanoporeGUI/LogBuffer" data-name="nanoporegui::logbuffer">
       <a href="NanoporeGUI/LogBuffer.html">LogBuffer</a>
       
@@ -254,6 +259,11 @@
   
   <li class=" " data-id="moleflow/NanoporeGUI/Runner" data-name="nanoporegui::runner">
       <a href="NanoporeGUI/Runner.html">Runner</a>
+      
+    </li>
+  
+  <li class=" " data-id="moleflow/NanoporeGUI/Translations" data-name="nanoporegui::translations">
+      <a href="NanoporeGUI/Translations.html">Translations</a>
       
     </li>
   
@@ -333,10 +343,22 @@ the displayed working directory. The GUI launches the sibling <code>moleflow</co
 configure multiple samples, raw replay and TLS in the JSON tab.
 Ubuntu requires GTK 3; macOS uses native controls. GUI smoke tests:
 <code>sh scripts/test-gui.sh</code> (Linux also needs <code>xvfb</code> and <code>xauth</code>).</p>
-<p>On macOS, the build and GUI test scripts use <code>-Dwithout_mt</code> for the GUI as a
-workaround for Crystal execution contexts moving fibers off AppKit's required
-main thread. Manual GUI builds need the same flag. The CLI binaries retain
-execution contexts for their worker pools.</p>
+<p>The GUI supports English, Spanish, French, German, Simplified Chinese and
+Japanese (<code>en</code>, <code>es</code>, <code>fr</code>, <code>de</code>, <code>zh</code>, <code>ja</code>). It follows the OS language by
+default (including the macOS preferred language); unsupported languages use
+English. Choose a language in the GUI and restart to apply it. The preference
+is saved separately in <code>$XDG_CONFIG_HOME/moleflow/gui.json</code> (default:
+<code>~/.config/moleflow/gui.json</code>). <code>bin/moleflow-gui --locale=ja</code> overrides the saved
+language for that launch. Choose <strong>System language</strong> to follow the OS again.
+Catalogues in <code>config/locales</code> are embedded in the binary; no translation files
+are needed at runtime. Configuration keys, protocol values and raw process logs
+retain their original format.</p>
+<p>The GUI requires <code>-Dwithout_mt</code> to keep native UI calls on the main OS thread,
+including after process I/O. Without it, Crystal execution contexts can move
+GUI fibers to another OS thread and cause native UI crashes (notably in AppKit
+on macOS). Build and GUI test scripts set this flag on every platform; manual
+builds must use <code>crystal build src/gui_main.cr --release -Dwithout_mt -o bin/moleflow-gui</code>.
+The CLI binaries retain execution contexts for their worker pools.</p>
 <h2><a id="record-and-replay" class="anchor" href="#record-and-replay">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
