@@ -1,5 +1,6 @@
 require "../moleflow/config"
 require "./model"
+require "./i18n"
 
 module NanoporeGUI
   module Profile
@@ -44,7 +45,7 @@ module NanoporeGUI
 
     def self.parse(text : String) : Document
       config = Moleflow::Config.from_json(text)
-      raise "At least one sample is required; edit samples in JSON" if config.samples.empty?
+      raise NanoporeGUI.t("At least one sample is required; edit samples in JSON") if config.samples.empty?
       defaults = JSON.parse(config.to_json).as_h
       defaults.merge!(JSON.parse(text).as_h)
       Document.new(defaults.to_json)

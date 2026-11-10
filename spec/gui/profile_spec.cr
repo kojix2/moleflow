@@ -1,6 +1,8 @@
 require "spec"
 require "../../src/gui/profile"
 
+NanoporeGUI::Translations.setup("en")
+
 module NanoporeGUI
   describe Profile do
     it "retains every sample, replay settings and fields outside the form" do

@@ -64,10 +64,23 @@ configure multiple samples, raw replay and TLS in the JSON tab.
 Ubuntu requires GTK 3; macOS uses native controls. GUI smoke tests:
 `sh scripts/test-gui.sh` (Linux also needs `xvfb` and `xauth`).
 
-On macOS, the build and GUI test scripts use `-Dwithout_mt` for the GUI as a
-workaround for Crystal execution contexts moving fibers off AppKit's required
-main thread. Manual GUI builds need the same flag. The CLI binaries retain
-execution contexts for their worker pools.
+The GUI supports English, Spanish, French, German, Simplified Chinese and
+Japanese (`en`, `es`, `fr`, `de`, `zh`, `ja`). It follows the OS language by
+default (including the macOS preferred language); unsupported languages use
+English. Choose a language in the GUI and restart to apply it. The preference
+is saved separately in `$XDG_CONFIG_HOME/moleflow/gui.json` (default:
+`~/.config/moleflow/gui.json`). `bin/moleflow-gui --locale=ja` overrides the saved
+language for that launch. Choose **System language** to follow the OS again.
+Catalogues in `config/locales` are embedded in the binary; no translation files
+are needed at runtime. Configuration keys, protocol values and raw process logs
+retain their original format.
+
+The GUI requires `-Dwithout_mt` to keep native UI calls on the main OS thread,
+including after process I/O. Without it, Crystal execution contexts can move
+GUI fibers to another OS thread and cause native UI crashes (notably in AppKit
+on macOS). Build and GUI test scripts set this flag on every platform; manual
+builds must use `crystal build src/gui_main.cr --release -Dwithout_mt -o bin/moleflow-gui`.
+The CLI binaries retain execution contexts for their worker pools.
 
 ## Record and replay
 
